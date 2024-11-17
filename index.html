@@ -94,24 +94,14 @@
 		.custom-dropdown {
 			position: fixed;
 			top: 10px;
-			/* Add some space from the top */
 			right: 10px;
-			/* Align to the right */
 			z-index: 9999;
 			background-color: #00796b;
-			/* Rich teal background */
 			border-radius: 8px;
 			padding: 10px 15px;
 			box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-			/* Subtle shadow */
 			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 			transition: background-color 0.3s ease;
-			/* Smooth color transition */
-		}
-
-		.custom-dropdown:hover {
-			background-color: #004d40;
-			/* Darker teal on hover */
 		}
 
 		.dropdown-btn {
@@ -124,20 +114,13 @@
 			border-radius: 4px;
 			text-align: left;
 			transition: all 0.3s ease;
-			/* Smooth transition */
 			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-		}
-
-		.dropdown-btn:hover {
-			background-color: #f5f5f5;
-			border-color: #bdbdbd;
 		}
 
 		.dropdown-content {
 			display: none;
 			position: absolute;
 			top: 55px;
-			/* Adjust dropdown distance */
 			right: 0;
 			background-color: #ffffff;
 			border-radius: 8px;
@@ -150,14 +133,15 @@
 			opacity: 0;
 			transform: translateY(-10px);
 			visibility: hidden;
-			transition: opacity 0.3s ease, transform 0.3s ease;
+			transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s 0.3s;
 		}
 
-		.custom-dropdown:hover .dropdown-content {
+		.dropdown-content.show {
 			display: block;
 			opacity: 1;
 			transform: translateY(0);
 			visibility: visible;
+			transition: opacity 0.3s ease, transform 0.3s ease;
 		}
 
 		.dropdown-content img {
@@ -196,68 +180,92 @@
 	<div id="container" style="color: black;"></div>
 
 	<div class="custom-dropdown">
-		<button class="dropdown-btn">Select an Option</button>
-		<div class="dropdown-content">
-			<div onclick="selectOption('Front Entry', 'FrontFinal')">
-				<img src="DropDown images/Front Entery.png" alt="Option 1">
-				<p>Front Entry</p>
-			</div>
-			<div onclick="selectOption('Basketball Court', 'walliballgroundfinal')">
-				<img src="DropDown images/BaskateBall Court.png" alt="Option 2">
-				<p>Basketball Court</p>
-			</div>
-			<div onclick="selectOption('Haridarshanam', 'haridarshanFinal')">
-				<img src="DropDown images/Haridarshanam.png" alt="Option 3">
-				<p>Haridarshanam</p>
-			</div>
-			<!-- Add more options as needed -->
-			<div onclick="selectOption('Boys Centeen', 'BoysCenteenExit')">
-				<img src="DropDown images/Centeen.png" alt="Option 4">
-				<p>Boys Centeen</p>
-			</div>
-			<div onclick="selectOption('Atmiya School', 'SchoolStageFinal')">
-				<img src="DropDown images/Atmiya School.png" alt="Option 5">
-				<p>Atmiya School</p>
-			</div>
-			<div onclick="selectOption('First Floor', 'LIFTPhotoFinal')">
-				<img src="DropDown images/First Floor.png" alt="Option 6">
-				<p>First Floor</p>
-			</div>
-			<div onclick="selectOption('Inside Building', 'middlegurdenofbuildingfinal')">
-				<img src="DropDown images/Inside Building.png" alt="Option 6">
-				<p>Inside Building</p>
-			</div>
-			<div onclick="selectOption('Atmiya Backside', 'GYMandvallyballgroundMiddlefinal')">
-				<img src="DropDown images/Back Atmiya.png" alt="Option 6">
-				<p>Atmiya Backside</p>
-			</div>
-		</div>
-	</div>
+    <button class="dropdown-btn">Select an Option</button>
+    <div class="dropdown-content">
+        <div onclick="selectOption('Front Entry', 'FrontFinal')">
+            <img src="DropDown images/Front Entery.png" alt="Option 1">
+            <p>Front Entry</p>
+        </div>
+        <div onclick="selectOption('Basketball Court', 'walliballgroundfinal')">
+            <img src="DropDown images/BaskateBall Court.png" alt="Option 2">
+            <p>Basketball Court</p>
+        </div>
+        <div onclick="selectOption('Haridarshanam', 'haridarshanFinal')">
+            <img src="DropDown images/Haridarshanam.png" alt="Option 3">
+            <p>Haridarshanam</p>
+        </div>
+        <div onclick="selectOption('Boys Centeen', 'BoysCenteenExit')">
+            <img src="DropDown images/Centeen.png" alt="Option 4">
+            <p>Boys Centeen</p>
+        </div>
+        <div onclick="selectOption('Atmiya School', 'SchoolStageFinal')">
+            <img src="DropDown images/Atmiya School.png" alt="Option 5">
+            <p>Atmiya School</p>
+        </div>
+        <div onclick="selectOption('First Floor', 'LIFTPhotoFinal')">
+            <img src="DropDown images/First Floor.png" alt="Option 6">
+            <p>First Floor</p>
+        </div>
+        <div onclick="selectOption('Inside Building', 'middlegurdenofbuildingfinal')">
+            <img src="DropDown images/Inside Building.png" alt="Option 7">
+            <p>Inside Building</p>
+        </div>
+        <div onclick="selectOption('Atmiya Backside', 'GYMandvallyballgroundMiddlefinal')">
+            <img src="DropDown images/Back Atmiya.png" alt="Option 8">
+            <p>Atmiya Backside</p>
+        </div>
+    </div>
+</div>
 
-	<script>
-		var Current_Image_Name;
-		window.onload = function () {
-			// This code will run when the entire page is loaded
-			Current_Image_Name = "FrontFinal";
-			console.log(a); // This will log "Page is fully loaded!" in the console
-		};
-	</script>
+<script>
+    var Current_Image_Name;
 
-	<script>
-		function selectOption(option, functionName) {
+    window.onload = function () {
+        // This code will run when the entire page is loaded
+        Current_Image_Name = "FrontFinal"; // Initialize with default value
+        console.log('Page is fully loaded!');
+    };
 
-			if (Current_Image_Name != functionName) {
-				alert(`You selected: ${option}`);
-				ChangePanorama(functionName);
-				Current_Image_Name=functionName;
-			}
-		}
+    // Function to select an option
+    function selectOption(option, functionName) {
+        // Only proceed if the option selected is different from the current
+        if (Current_Image_Name !== functionName) {
+            alert(`You selected: ${option}`);
+            ChangePanorama(functionName); // Assuming ChangePanorama is defined elsewhere
+            Current_Image_Name = functionName; // Update the current image name
+            closeDropdown(); // Optionally close the dropdown after selection
+        }
+    }
 
-		function handleImageLink() {
-			// Example action: Perform any custom logic
-			console.log('handleImageLink function was called.');
-		}
-	</script>
+    // Function to change the panorama (you need to define this logic)
+    function ChangePanorama(functionName) {
+        // Your logic to change the panorama based on functionName
+        console.log('Changing panorama to:', functionName);
+    }
+
+    // Handle dropdown button click to toggle visibility
+    document.querySelector(".dropdown-btn").addEventListener("click", function(event) {
+        event.stopPropagation(); // Prevent event from bubbling up to the document
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.classList.toggle("show"); // Toggle dropdown visibility
+    });
+
+    // Close the dropdown if clicked outside
+    document.addEventListener("click", function(event) {
+        const dropdownBtn = document.querySelector(".dropdown-btn");
+        const dropdownContent = document.querySelector(".dropdown-content");
+
+        if (!dropdownBtn.contains(event.target) && !dropdownContent.contains(event.target)) {
+            dropdownContent.classList.remove("show");
+        }
+    });
+
+    // Close the dropdown menu after an option is selected
+    function closeDropdown() {
+        const dropdownContent = document.querySelector(".dropdown-content");
+        dropdownContent.classList.remove("show");
+    }
+</script>
 
 
 	<!--customhtml-->
